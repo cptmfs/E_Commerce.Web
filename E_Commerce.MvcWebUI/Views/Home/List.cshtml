@@ -1,0 +1,41 @@
+﻿@using E_Commerce.MvcWebUI.Entity;
+@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "List";
+}
+
+<div class="row">
+            <div class="col-md-3">
+                <ul class="list-group">
+                    <li class="list-group-item active" aria-current="true">An active item</li>
+                    <li class="list-group-item">A second item</li>
+                    <li class="list-group-item">A third item</li>
+                    <li class="list-group-item">A fourth item</li>
+                    <li class="list-group-item">And a fifth one</li>
+                </ul>
+            </div>
+            <div class="col-md-9">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col mt-2">
+                    <div class="card h-100">
+                        <img src="holder.js/100px160/" class="card-img-top" alt="@item.Name">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="/Home/Details/@item.Id">@item.Name</a>
+                            </h5>
+                            <p class="card-text">@item.Description</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">@item.Price</small>
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+    </div>
+
+        </div>
