@@ -1,0 +1,38 @@
+﻿@model E_Commerce.MvcWebUI2.Entity.Product
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+<div class="container pb-5">
+    <div class="alert alert-secondary" role="alert">
+        Bu ürünü silmek istediğinizden emin misiniz?
+    </div>
+    <hr />
+    <dl class="dl-horizontal">
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input type="submit" value="Sil" class="btn btn-danger mt-2" /> |
+    @Html.ActionLink("Ürün Listesi", "Index", null, new { @class = "btn btn-warning mt-2" })
+</div>
+    }
+</div>
+</div>
