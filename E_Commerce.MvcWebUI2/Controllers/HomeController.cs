@@ -34,7 +34,7 @@ namespace E_Commerce.MvcWebUI2.Controllers
         {
             return View(_context.Products.Where(x => x.Id == id).FirstOrDefault());
         }
-        public ActionResult List()
+        public ActionResult List(int? id)
         {
             var products = _context.Products.Where(x => x.IsApproved).
                 Select(y => new ProductViewModel()
@@ -46,9 +46,14 @@ namespace E_Commerce.MvcWebUI2.Controllers
                     Stock = y.Stock,
                     Image = y.Image ?? "1.jpg",
                     CategoryId = y.CategoryId
-                }).ToList();
+                }).AsQueryable();
 
-            return View(products);
+            if (id!=null)
+            {
+                products = products.Where(i => i.CategoryId == id);
+            }
+
+            return View(products.ToList());
         }
         public PartialViewResult GetCategories()
         {

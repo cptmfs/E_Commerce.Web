@@ -1,11 +1,44 @@
 ﻿@model IEnumerable<E_Commerce.MvcWebUI2.Entity.Category>
+@{
+    var selectedCategory = Url.RequestContext.RouteData.Values["id"];
+}
+
 <ul class="list-group">
+    <a href="/Home/List" class="list-group-item">
+        <i class="fas fa-angle-double-right" aria-hidden="true"></i>
+        Tüm Kategoriler
+    </a>
+
+
+
     @foreach (var item in Model)
     {
-        <li class="list-group-item">
-            <a href="/Home/List/@item.Id">
+        if (selectedCategory != null)
+        {
+            if (item.Id == int.Parse(selectedCategory.ToString()))
+            {
+                //seçilen kategori ile gelen id birbirine eşittir.
+                <a href="/Home/List/@item.Id" class="list-group-item active">
+                    <i class="fas fa-angle-double-right" aria-hidden="true"></i>
+                    @item.Name
+                </a>
+            }
+            else
+            {
+                <a href="/Home/List/@item.Id" class="list-group-item ">
+                    <i class="fas fa-angle-double-right" aria-hidden="true"></i>
+                    @item.Name
+                </a>
+            }
+        }
+        else
+        {
+            <a href="/Home/List/@item.Id" class="list-group-item ">
+                <i class="fas fa-angle-double-right" aria-hidden="true"></i>
                 @item.Name
             </a>
-        </li>
+        }
+
+
     }
 </ul>
