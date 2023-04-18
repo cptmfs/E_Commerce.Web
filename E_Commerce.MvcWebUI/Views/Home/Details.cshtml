@@ -1,9 +1,10 @@
 ﻿@using E_Commerce.MvcWebUI.Entity;
 @model Product
 
+<div id="product-details" class="container-pb-5">
 <div class="row mt-5">
     <div class="col-md-6">
-        <img src="/img/thinkpad.png" class="img-responsive img-fluid rounded w-100">
+        <img src="/img/@Model.Image" class="img-responsive img-fluid rounded w-100">
     </div>
     <div class="col-md-6" >
         <div class="row">
@@ -13,7 +14,14 @@
         </div>
         <div class="row mt-2">
             <div class="col-md-12">
-                <span class="badge bg-success">In Stock</span>
+                @if (Model.IsApproved)
+                    {
+                        <span class="badge bg-success">Stokta Var</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger">Stokta Yok</span>
+                    }
                 <span class="product-number">#236783</span>
             </div>
         </div>
@@ -25,11 +33,11 @@
             </div>
             <div class="row mt-2">
                 <div class="col-md-4">
-                    <i class="fa-solid fa-star fa-fw"></i>
-                    <i class="fa-solid fa-star fa-fw"></i>
-                    <i class="fa-solid fa-star fa-fw"></i>
-                    <i class="fa-solid fa-star fa-fw"></i>
-                    <i class="fa-regular fa-star-half-stroke"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
                     <span class="badge bg-primary">37</span>
                 </div>
                 <div id="write-review" class="col-md-4">
@@ -44,7 +52,7 @@
             <div class="row mt-2">
                 <div class="col-md-12">
                     <button class="btn btn-success">
-                        <i class="fa-solid fa-cart-plus"></i>
+                        <i class="bi bi-cart2"></i>
                         Add To Cart
                     </button>
                 </div>
@@ -81,4 +89,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>

@@ -1,0 +1,17 @@
+﻿@model IEnumerable<E_Commerce.MvcWebUI2.ViewModel.ProductViewModel>
+@{
+    ViewData["Title"] = "List";
+}
+<div class="container pb-5 mt-3">
+
+    <div class="row">
+        <div class="col-md-3">
+            @Html.Action("GetCategories", "Home")
+        </div>
+        <div class="col-md-9">
+            @Html.Partial("_ProductListPartialView",Model)
+        </div>
+    </div>
+</div>
+
+

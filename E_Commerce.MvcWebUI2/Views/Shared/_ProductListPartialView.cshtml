@@ -1,0 +1,29 @@
+﻿@model IEnumerable<E_Commerce.MvcWebUI2.ViewModel.ProductViewModel>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col mb-3">
+            <div class="card">
+                <img src="~/theme/img/@item.Image" class="card-img-bottom resim" alt="@item.Name">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="/Home/Details/@item.Id">@item.Name</a>
+                    </h5>
+                    <p class="card-text description">
+                        @item.Description
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted product-price">
+                        <i class="fa fa-try" aria-hidden="true"></i>
+                        @item.Price
+                    </small>
+                    <a href="/Home/Details/@item.Id" class="btn btn-primary btn-sm float-end">
+                        <i class="fas fa-angle-double-right"></i>
+                        Ürünü İncele
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

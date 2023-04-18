@@ -1,5 +1,6 @@
 ﻿using E_Commerce.MvcWebUI.Entity;
 using E_Commerce.MvcWebUI.Models;
+using E_Commerce.MvcWebUI.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -17,7 +18,19 @@ namespace E_Commerce.MvcWebUI.Controllers
         public IActionResult Index()
         {
 
-            return View(_context.Products.Where(x=> x.IsHome && x.IsApproved).ToList());
+            var products=_context.Products.Where(x=> x.IsHome && x.IsApproved).
+                Select(y=>new ProductViewModel()
+                {
+                    Id=y.Id,
+                    Name = y.Name.Length > 50 ? y.Name.Substring(0, 47) + "..." : y.Name,
+                    Description = y.Description.Length>50 ? y.Description.Substring(0,47)+"...":y.Description,
+                    Price= y.Price,
+                    Stock=y.Stock,
+                    Image=y.Image ?? "1.jpg",
+                    CategoryId=y.CategoryId
+                }).ToList();
+
+            return View(products);
         }
         public IActionResult Details(int id)
         {
@@ -25,7 +38,23 @@ namespace E_Commerce.MvcWebUI.Controllers
         }
         public IActionResult List()
         {
-            return View(_context.Products.ToList());
+            var products = _context.Products.Where(x => x.IsApproved).
+                Select(y => new ProductViewModel()
+                {
+                    Id = y.Id,
+                    Name = y.Name.Length > 50 ? y.Name.Substring(0, 47) + "..." : y.Name,
+                    Description = y.Description.Length > 50 ? y.Description.Substring(0, 47) + "..." : y.Description,
+                    Price = y.Price,
+                    Stock = y.Stock,
+                    Image = y.Image ?? "1.jpg",
+                    CategoryId = y.CategoryId
+                }).ToList();
+
+            return View(products);
+        }
+        public PartialViewResult GetCategories()
+        {
+            return PartialView(_context.Categories.ToList());
         }
 
         public IActionResult Privacy()
