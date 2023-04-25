@@ -35,17 +35,14 @@
                         <a class="nav-link" href="#">İletişim</a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-light" type="submit">Search</button>
-                </form>
+                @Html.Partial("_LoginPartialView")
             </div>
         </div>
     </nav>
 
     @RenderBody()
 
-    <footer class="bg-light text-center text-white">
+    <footer class="bg-light text-center text-white fixed-bottom">
         <!-- Grid container -->
         <div class="container p-4 pb-0">
             <!-- Section: Social media -->
@@ -99,6 +96,6 @@
     <script src="~/Scripts/jquery-3.6.4.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
-    https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>
 </body>
 </html>
