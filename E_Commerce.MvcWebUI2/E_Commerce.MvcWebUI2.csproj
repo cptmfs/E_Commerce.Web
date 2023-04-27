@@ -329,6 +329,7 @@
     <Content Include="theme\img\6.jpg" />
     <Content Include="theme\img\bg.jpg" />
     <Content Include="theme\img\macbook.png" />
+    <Content Include="theme\img\pngwing.com.png" />
     <Content Include="theme\img\thinkpad.png" />
     <Content Include="theme\js\holder.min.js" />
     <Content Include="theme\product-details.html" />
@@ -339,6 +340,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup1.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CardController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
@@ -355,7 +357,9 @@
     <Compile Include="Identity\IdentityInitializer.cs" />
     <Compile Include="Models\Card.cs" />
     <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Register.cs" />
+    <Compile Include="Models\ShippingDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\ProductViewModel.cs" />
   </ItemGroup>
@@ -407,6 +411,10 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Shared\_LoginPartialView.cshtml" />
+    <Content Include="Views\Card\Index.cshtml" />
+    <Content Include="Views\Card\Summary.cshtml" />
+    <Content Include="Views\Card\Checkout.cshtml" />
+    <Content Include="Views\Card\Completed.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

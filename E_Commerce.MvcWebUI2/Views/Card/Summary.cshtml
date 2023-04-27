@@ -1,0 +1,14 @@
+﻿@model E_Commerce.MvcWebUI2.Models.Card
+    <style>
+        #card{
+            color:black;
+        }
+    </style>
+<ul class="navbar-nav my-2 my-lg-0 me-2" >
+    <li id="card" class="nav-item" >
+            <a class="nav-link" href="/Card">
+                <i class="bi bi-cart2"></i>
+                (@Model.CardLines.Count)
+            </a>    
+       </li>
+</ul> 

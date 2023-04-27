@@ -50,10 +50,22 @@
                 </div>
                 <div class="row mt-2">
                     <div class="col-md-12">
-                        <button class="btn btn-success">
-                            <i class="bi bi-cart2"></i>
-                            Add To Cart
-                        </button>
+
+                        @using (Html.BeginForm("AddToCard", "Card"))
+                        {
+                            @Html.HiddenFor(i=> i.Id)
+                            
+                            <button class="btn btn-success">
+                                <i class="bi bi-cart2"></i>
+                                Add To Cart
+                            </button>
+                        }
+
+
+
+
+
+
                     </div>
                 </div>
             </div>

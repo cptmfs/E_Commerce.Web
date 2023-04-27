@@ -1,0 +1,96 @@
+﻿@model E_Commerce.MvcWebUI2.Models.ShippingDetails
+@{
+    ViewBag.Title = "Checkout";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h4>Sipariş Bilgileriniz</h4>
+            <p>Lütfen sipariş bilgilerinizi doldurunuz.</p>
+            <hr />
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary()
+                <div class="form-group">
+                    <div class="row g-3 align-items-center mt-2">
+                            <div class="col-1">
+                                <label class="col-form-label">User Name</label>
+                            </div>
+                            <div class="col-md-8">
+                                <span class="badge-danger">
+                                    @User.Identity.Name
+                                </span>
+                            </div>
+                        </div>
+                    <div class="container align-items-center">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-1">
+                                <label class="col-form-label">Adress Title</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input name="AdressTitle" type="text" class="form-control">
+                            </div>
+                        </div>                       
+                        <div class="row g-3 align-items-center mt-2">
+                            <div class="col-1">
+                                <label class="col-form-label">Address 1</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input name="Adress1" type="text" class="form-control">
+                            </div>
+                        </div>
+                        @*<div class="row g-3 align-items-center mt-2">
+                                <div class="col-1">
+                                    <label class="col-form-label">Address 2</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input name="Adress2" type="text" class="form-control">
+                                </div>
+                            </div>*@
+                        <div class="row g-3 align-items-center mt-2">
+                            <div class="col-1">
+                                <label class="col-form-label">City</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input name="City" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row g-3 align-items-center mt-2">
+                            <div class="col-1">
+                                <label class="col-form-label">Region</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" name="Region" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row g-3 align-items-center mt-2">
+                            <div class="col-1">
+                                <label class="col-form-label">Country</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" name="Country" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row g-3 align-items-center mt-2">
+                            <div class="col-1">
+                                <label class="col-form-label">Postal Code</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input name="PostalCode" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4 mt-4 float-lg-end">
+                            <button type="submit" class="btn btn-outline-primary">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-3.6.4.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+
