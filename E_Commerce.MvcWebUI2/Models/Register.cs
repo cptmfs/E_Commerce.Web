@@ -28,5 +28,7 @@ namespace E_Commerce.MvcWebUI2.Models
         [Required]
         [DisplayName("Şifre Tekrar")]
         public string RePassword { get; set; }
+        [DataType(DataType.PhoneNumber)]
+        public string MobilePhone { get; set; }
     }
 }
