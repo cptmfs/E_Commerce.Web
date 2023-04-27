@@ -85,7 +85,8 @@ namespace E_Commerce.MvcWebUI2.Controllers
             order.OrderNumber = "A"+(new Random()).Next(11111,99999).ToString(); // her sipariş için benzersiz numara.
             order.Total = card.Total();
             order.OrderDate = DateTime.Now;
-            order.UserName = shipping.UserName;
+            order.OrderState = EnumOrderState.Waiting;
+            order.UserName=User.Identity.Name;
             order.AdressTitle = shipping.AdressTitle;
             order.Adress1=shipping.Adress1;
             order.City = shipping.City;

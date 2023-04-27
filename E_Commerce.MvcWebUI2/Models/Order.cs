@@ -13,6 +13,7 @@ namespace E_Commerce.MvcWebUI2.Models
 		public string OrderNumber { get; set; }
 		public double Total { get; set; }
 		public DateTime OrderDate { get; set; }
+		public EnumOrderState OrderState { get; set; }
 		public string UserName { get; set; }
 		public string AdressTitle { get; set; }
 		public string Adress1 { get; set; }

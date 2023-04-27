@@ -1,0 +1,37 @@
+﻿@model IEnumerable<E_Commerce.MvcWebUI2.Models.UserOrderModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Sipariş Bilgileriniz</h2>
+            <hr />
+            <table class="table table-secondary table-bordered table-striped-columns text-center">
+                <thead>
+                    <tr>
+                        <th>Order Number</th>
+                        <th>Order Date</th>
+                        <th>Total</th>
+                        <th colspan="2">Status</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.OrderNumber</td>
+                            <td>@item.OrderDate.ToShortDateString()</td>
+                            <td>@item.Total.ToString("c")</td>
+                            <td>@item.OrderState</td>
+                            <td>@Html.ActionLink("Details", "Details", new {id=item.Id},new {@class="btn btn-primary"})</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
