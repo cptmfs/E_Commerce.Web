@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -53,9 +54,17 @@ namespace E_Commerce.MvcWebUI2.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Products.Add(product);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (Request.Files.Count > 0)
+                {
+                    string fileName = Path.GetFileName(Request.Files[0].FileName);
+                    string fileType = Path.GetExtension(Request.Files[0].FileName);
+                    string dosyaYol = "~/theme/img/" + fileName;
+                    Request.Files[0].SaveAs(Server.MapPath(dosyaYol));
+                    product.Image = fileName;
+                    db.Products.Add(product);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
 
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", product.CategoryId);
