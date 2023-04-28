@@ -1,0 +1,100 @@
+﻿@model E_Commerce.MvcWebUI2.Models.OrderDetailsModel
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Sipariş Detayları</h2>
+            <hr />
+            @if (TempData["message"]!=null)
+            {
+                <div class="alert alert-success">
+                    <i class="bi bi-check-square-fill"></i>
+                    @TempData["message"]
+                </div>
+            }
+        <dl class="row">
+            <dt class="col-sm-3">UserName</dt>
+            <dd class="col-sm-9">
+                @Model.UserName
+            </dd>
+            <dt class="col-sm-3">Order State</dt>
+            <dd class="col-sm-9">
+                <dl class="row">
+                    @using (Html.BeginForm("UpdateOrderState", "Order", FormMethod.Post))
+                    {
+                        @Html.HiddenFor(i => i.OrderId)
+                        <dl class="row">
+                            <dt class="col-sm-8">
+                                @Html.EnumDropDownListFor(i => i.OrderState, "Select Order State", new { @class = "form-control" })
+                            </dt>
+                            <dd class="col-sm-4">
+                                <button type="submit" class="btn btn-primary">Update</button>
+                            </dd>
+                        </dl>
+                    }
+
+                </dl>
+            </dd>
+            <dt class="col-sm-3">Order Number</dt>
+            <dd class="col-sm-9">@Model.OrderNumber</dd>
+            <dt class="col-sm-3">Total</dt>
+            <dd class="col-sm-9">@Model.Total.ToString("c")</dd>
+            <dt class="col-sm-3">Order Date</dt>
+            <dd class="col-sm-9">@Model.OrderDate.ToShortDateString()</dd>
+
+            <dt class="col-sm-3">Adress</dt>
+            <dd class="col-sm-9">
+                @Model.AdressTitle
+                <hr />
+                @Model.Adress1
+                <br />
+                @Model.Country - @Model.City - @Model.Region
+                <br />
+                @Model.PostalCode
+            </dd>
+            <dt class="col-sm-3">Product</dt>
+            <dd class="col-sm-9">
+                <table class="table table-success table-hover text-start">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>ProductName</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.OrderLines)
+                        {
+                            <tr>
+                                <td>
+                                    <img src="~/theme/img/@item.Image" width="70" />
+                                </td>
+                                <td>
+                                    @item.ProductName
+                                </td>
+                                <td>
+                                    @item.Quantity
+                                </td>
+                                <td>@item.Price.ToString("c")</td>
+                                <td>
+                                    <a href="/Home/Details/@item.ProductId" class="btn btn-outline-warning btn-sm">
+                                        <i class="bi bi-box-arrow-right"></i>
+                                        Product Details
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </dd>
+        </dl>
+        </div>
+    </div>
+</div>
